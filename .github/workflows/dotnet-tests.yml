@@ -20,13 +20,13 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore
-        run: dotnet restore GLMS.sln
+        run: dotnet restore GLMSPrototype.sln
 
       - name: Build
-        run: dotnet build GLMS.sln --configuration Release --no-restore
+        run: dotnet build GLMSPrototype.sln --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test GLMS.sln --configuration Release --no-build --verbosity normal
+        run: dotnet test GLMSPrototype.sln --configuration Release --no-build --verbosity normal
 
       - name: Upload test results
         if: always()

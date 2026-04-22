@@ -1,0 +1,62 @@
+@* Learning edition Razor view: comments explain how the page is assembled step by step. *@
+@* Declares the view model type that this page expects. *@
+@model DashboardViewModel
+@* Starts a Razor code block for page-level setup. *@
+@{
+    @* Sets the page title used by the browser and layout. *@
+    ViewData["Title"] = "Dashboard";
+}
+@* Creates a visual container to group related content. *@
+<div class="grid">
+    @* Creates a visual container to group related content. *@
+    <div class="card hero">
+        @* Displays content to the user in a readable format. *@
+        <h1>Welcome, @Model.UserName</h1>
+        @* Displays content to the user in a readable format. *@
+        <p>Role: <strong>@Model.UserRole</strong></p>
+        @* Displays content to the user in a readable format. *@
+        <p>Currency strategy: <strong>@ViewBag.StrategyName</strong></p>
+        @* Displays content to the user in a readable format. *@
+        <p>USD to ZAR placeholder rate: <strong>@Model.CurrentUsdToZarRate</strong></p>
+    @* Creates a visual container to group related content. *@
+    </div>
+
+    @* Creates a visual container to group related content. *@
+    <div class="card">
+        @* Displays content to the user in a readable format. *@
+        <h2>Quick stats</h2>
+        @* Creates a visual container to group related content. *@
+        <div class="stat">Clients: <strong>@Model.ClientCount</strong></div>
+        @* Creates a visual container to group related content. *@
+        <div class="stat">Contracts: <strong>@Model.ContractCount</strong></div>
+        @* Creates a visual container to group related content. *@
+        <div class="stat">Service Requests: <strong>@Model.ServiceRequestCount</strong></div>
+    @* Creates a visual container to group related content. *@
+    </div>
+
+    @* Creates a visual container to group related content. *@
+    <div class="card">
+        @* Displays content to the user in a readable format. *@
+        <h2>Recent notifications</h2>
+        @* Checks a condition so the view can show the right content for this state. *@
+        @if (Model.Notifications.Count == 0)
+        {
+            @* Displays content to the user in a readable format. *@
+            <p class="muted">Nothing yet.</p>
+        }
+        else
+        {
+            @* Displays content to the user in a readable format. *@
+            <ul>
+                @* Loops through the list so every item is rendered as a row or list entry. *@
+                @foreach (var note in Model.Notifications)
+                {
+                    @* Displays content to the user in a readable format. *@
+                    <li>@note</li>
+                }
+            </ul>
+        }
+    @* Creates a visual container to group related content. *@
+    </div>
+@* Creates a visual container to group related content. *@
+</div>

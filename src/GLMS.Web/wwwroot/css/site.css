@@ -1,0 +1,271 @@
+/* Learning edition CSS: each section is annotated so the page styles read like a design guide. */
+/* This line contributes to the page layout, spacing, or visual consistency. */
+:root {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    --bg: #f6f7fb;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    --card: #ffffff;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    --text: #1f2937;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    --muted: #6b7280;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    --accent: #1d4ed8;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    --accent-dark: #1e40af;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    --border: #dbe2ea;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+
+/* This line contributes to the page layout, spacing, or visual consistency. */
+* { box-sizing: border-box; }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+body {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    margin: 0;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    font-family: Arial, Helvetica, sans-serif;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: var(--bg);
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    color: var(--text);
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+a { color: var(--accent); text-decoration: none; }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+a:hover { text-decoration: underline; }
+
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.topbar {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    display: flex;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    justify-content: space-between;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    align-items: center;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    padding: 14px 22px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: #111827;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    color: white;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.brand { font-weight: 700; }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.nav { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.nav a, .link-button {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    color: white;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: transparent;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border: 0;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    font-size: 14px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    cursor: pointer;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.container {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    max-width: 1200px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    margin: 24px auto;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    padding: 0 16px 40px;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.card {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: var(--card);
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border: 1px solid var(--border);
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border-radius: 16px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    padding: 20px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    margin-bottom: 18px;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.hero { background: linear-gradient(135deg, #eff6ff, #fff); }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.grid {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    display: grid;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    gap: 18px;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.page-head {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    display: flex;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    justify-content: space-between;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    align-items: center;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    gap: 12px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    margin-bottom: 14px;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.form-stack {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    display: grid;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    gap: 12px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    max-width: 620px;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+label { font-weight: 600; }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+input, select, textarea {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    width: 100%;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    padding: 11px 12px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border: 1px solid var(--border);
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border-radius: 10px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    font: inherit;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: white;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.btn, button.btn {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    display: inline-block;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: var(--accent);
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    color: white;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border: none;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border-radius: 10px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    padding: 10px 16px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    cursor: pointer;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    text-decoration: none;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.btn:hover { background: var(--accent-dark); text-decoration: none; color: white; }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.btn.secondary {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: #e5e7eb;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    color: #111827;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.btn.secondary:hover {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: #d1d5db;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    color: #111827;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.inline-form { display: inline; }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+table {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    width: 100%;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border-collapse: collapse;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+th, td {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    text-align: left;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    padding: 10px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border-bottom: 1px solid var(--border);
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    vertical-align: top;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.validation-summary {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    color: #b91c1c;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.alert.success {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    background: #dcfce7;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border: 1px solid #86efac;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    color: #166534;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    padding: 12px 16px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    border-radius: 12px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    margin-bottom: 16px;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.muted { color: var(--muted); }
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.auth-layout {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    display: grid;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    gap: 18px;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.filter-grid {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    display: grid;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    gap: 12px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    align-items: end;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.filter-actions {
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    display: flex;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    gap: 8px;
+    /* This line contributes to the page layout, spacing, or visual consistency. */
+    flex-wrap: wrap;
+/* This line contributes to the page layout, spacing, or visual consistency. */
+}
+/* This line contributes to the page layout, spacing, or visual consistency. */
+.stat { padding: 8px 0; font-size: 1.02rem; }

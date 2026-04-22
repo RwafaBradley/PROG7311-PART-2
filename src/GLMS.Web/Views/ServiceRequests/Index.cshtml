@@ -1,0 +1,50 @@
+@* Learning edition Razor view: comments explain how the page is assembled step by step. *@
+@* Declares the view model type that this page expects. *@
+@model List<ServiceRequest>
+@* Starts a Razor code block for page-level setup. *@
+@{
+    @* Sets the page title used by the browser and layout. *@
+    ViewData["Title"] = "Service Requests";
+}
+@* Creates a visual container to group related content. *@
+<div class="page-head">
+    @* Displays content to the user in a readable format. *@
+    <h1>Service Requests</h1>
+    @* Renders a link or button for navigation or an action. *@
+    <a class="btn" asp-action="Create">New request</a>
+@* Creates a visual container to group related content. *@
+</div>
+
+@* Creates a visual container to group related content. *@
+<div class="card">
+    @* Starts a table used to present rows of business data. *@
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Contract</th>
+                <th>Description</th>
+                <th>USD</th>
+                <th>Rate</th>
+                <th>ZAR</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Loops through the list so every item is rendered as a row or list entry. *@
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.Id</td>
+                    <td>@request.Contract?.ContractNumber</td>
+                    <td>@request.Description</td>
+                    <td>@request.UsdAmount</td>
+                    <td>@request.ExchangeRate</td>
+                    <td>@request.ZarAmount</td>
+                    <td>@request.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+@* Creates a visual container to group related content. *@
+</div>

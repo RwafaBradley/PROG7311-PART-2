@@ -1,0 +1,60 @@
+@* Learning edition Razor view: comments explain how the page is assembled step by step. *@
+@* Declares the view model type that this page expects. *@
+@model LoginViewModel
+@* Starts a Razor code block for page-level setup. *@
+@{
+    @* Sets the page title used by the browser and layout. *@
+    ViewData["Title"] = "Login";
+    var credentials = ViewBag.Credentials as string[] ?? Array.Empty<string>();
+}
+@* Creates a visual container to group related content. *@
+<div class="auth-layout">
+    @* Creates a visual container to group related content. *@
+    <div class="card">
+        @* Displays content to the user in a readable format. *@
+        <h1>Login</h1>
+        @* Displays content to the user in a readable format. *@
+        <p class="muted">Use one of the demo accounts below.</p>
+
+        @* Begins a form that sends user input back to the controller. *@
+        <form asp-action="Login" method="post" class="form-stack">
+            @Html.AntiForgeryToken()
+            @* Renders an input control so the user can enter or choose data. *@
+            <input type="hidden" asp-for="ReturnUrl" />
+            @* Creates a visual container to group related content. *@
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            @* Shows the label that explains what the input is for. *@
+            <label asp-for="Username"></label>
+            @* Renders an input control so the user can enter or choose data. *@
+            <input asp-for="Username" />
+
+            @* Shows the label that explains what the input is for. *@
+            <label asp-for="Password"></label>
+            @* Renders an input control so the user can enter or choose data. *@
+            <input asp-for="Password" />
+
+            <button type="submit" class="btn">Sign in</button>
+        </form>
+    @* Creates a visual container to group related content. *@
+    </div>
+
+    @* Creates a visual container to group related content. *@
+    <div class="card">
+        @* Displays content to the user in a readable format. *@
+        <h2>Demo credentials</h2>
+        @* Displays content to the user in a readable format. *@
+        <ul>
+            @* Loops through the list so every item is rendered as a row or list entry. *@
+            @foreach (var item in credentials)
+            {
+                @* Displays content to the user in a readable format. *@
+                <li>@item</li>
+            }
+        </ul>
+        @* Displays content to the user in a readable format. *@
+        <p class="muted">This prototype uses cookie authentication and runs without a database.</p>
+    @* Creates a visual container to group related content. *@
+    </div>
+@* Creates a visual container to group related content. *@
+</div>

@@ -1,0 +1,51 @@
+@* Learning edition Razor view: comments explain how the page is assembled step by step. *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLMS Prototype</title>
+    @* Displays content to the user in a readable format. *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="topbar">
+        @* Creates a visual container to group related content. *@
+        <div class="brand">GLMS Prototype</div>
+        <nav class="nav">
+            @* Checks a condition so the view can show the right content for this state. *@
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                @* Renders a link or button for navigation or an action. *@
+                <a asp-controller="Home" asp-action="Index">Dashboard</a>
+                @* Renders a link or button for navigation or an action. *@
+                <a asp-controller="Clients" asp-action="Index">Clients</a>
+                @* Renders a link or button for navigation or an action. *@
+                <a asp-controller="Contracts" asp-action="Index">Contracts</a>
+                @* Renders a link or button for navigation or an action. *@
+                <a asp-controller="ServiceRequests" asp-action="Index">Requests</a>
+                @* Begins a form that sends user input back to the controller. *@
+                <form asp-controller="Account" asp-action="Logout" method="post" class="inline-form">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="link-button">Logout</button>
+                </form>
+            }
+            else
+            {
+                @* Renders a link or button for navigation or an action. *@
+                <a asp-controller="Account" asp-action="Login">Login</a>
+            }
+        </nav>
+    </header>
+    <main class="container">
+        @* Checks a condition so the view can show the right content for this state. *@
+        @if (TempData["Message"] is not null)
+        {
+            @* Creates a visual container to group related content. *@
+            <div class="alert success">@TempData["Message"]</div>
+        }
+        @RenderBody()
+    </main>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,76 @@
+@* Learning edition Razor view: comments explain how the page is assembled step by step. *@
+@* Declares the view model type that this page expects. *@
+@model ServiceRequestCreateViewModel
+@* Starts a Razor code block for page-level setup. *@
+@{
+    @* Sets the page title used by the browser and layout. *@
+    ViewData["Title"] = "Create Service Request";
+    var rate = Model.ExchangeRate;
+    var strategy = ViewBag.StrategyName as string ?? "Strategy";
+}
+@* Creates a visual container to group related content. *@
+<div class="card">
+    @* Displays content to the user in a readable format. *@
+    <h1>Create Service Request</h1>
+    @* Displays content to the user in a readable format. *@
+    <p class="muted">Currency strategy: @strategy</p>
+
+    @* Begins a form that sends user input back to the controller. *@
+    <form asp-action="Create" method="post" class="form-stack">
+        @Html.AntiForgeryToken()
+        @* Creates a visual container to group related content. *@
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        @* Shows the label that explains what the input is for. *@
+        <label asp-for="ContractId"></label>
+        @* Renders an input control so the user can enter or choose data. *@
+        <select asp-for="ContractId" asp-items="Model.Contracts">
+            <option value="">Choose a contract</option>
+        </select>
+
+        @* Shows the label that explains what the input is for. *@
+        <label asp-for="Description"></label>
+        @* Renders an input control so the user can enter or choose data. *@
+        <textarea asp-for="Description" rows="4"></textarea>
+
+        @* Shows the label that explains what the input is for. *@
+        <label asp-for="UsdAmount"></label>
+        @* Renders an input control so the user can enter or choose data. *@
+        <input asp-for="UsdAmount" id="usdAmount" step="0.01" min="0" />
+
+        @* Shows the label that explains what the input is for. *@
+        <label>Exchange Rate (USD to ZAR)</label>
+        @* Renders an input control so the user can enter or choose data. *@
+        <input id="exchangeRate" value="@rate" readonly />
+
+        @* Shows the label that explains what the input is for. *@
+        <label>ZAR Amount</label>
+        @* Renders an input control so the user can enter or choose data. *@
+        <input id="zarAmount" value="@Model.ZarAmount" readonly />
+
+        <button type="submit" class="btn">Save</button>
+    </form>
+@* Creates a visual container to group related content. *@
+</div>
+
+@* Adds page-specific JavaScript at the bottom of the layout. *@
+@section Scripts {
+@* Starts client-side logic that updates the page without a refresh. *@
+<script>
+(function () {
+    const usd = document.getElementById('usdAmount');
+    const rateInput = document.getElementById('exchangeRate');
+    const zar = document.getElementById('zarAmount');
+
+    function calc() {
+        const usdValue = parseFloat(usd.value || '0');
+        const rateValue = parseFloat(rateInput.value || '0');
+        zar.value = (usdValue * rateValue).toFixed(2);
+    }
+
+    usd.addEventListener('input', calc);
+    calc();
+})();
+@* Ends the client-side logic block. *@
+</script>
+}

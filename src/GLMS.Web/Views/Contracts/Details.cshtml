@@ -1,0 +1,29 @@
+@* Learning edition Razor view: comments explain how the page is assembled step by step. *@
+@* Declares the view model type that this page expects. *@
+@model Contract
+@* Starts a Razor code block for page-level setup. *@
+@{
+    @* Sets the page title used by the browser and layout. *@
+    ViewData["Title"] = "Contract Details";
+}
+@* Creates a visual container to group related content. *@
+<div class="card">
+    @* Displays content to the user in a readable format. *@
+    <h1>@Model.ContractNumber</h1>
+    @* Displays content to the user in a readable format. *@
+    <p><strong>Client:</strong> @Model.Client?.Name</p>
+    @* Displays content to the user in a readable format. *@
+    <p><strong>Status:</strong> @Model.Status</p>
+    @* Displays content to the user in a readable format. *@
+    <p><strong>Service Level:</strong> @Model.ServiceLevel</p>
+    @* Displays content to the user in a readable format. *@
+    <p><strong>Dates:</strong> @Model.StartDate.ToString("yyyy-MM-dd") to @Model.EndDate.ToString("yyyy-MM-dd")</p>
+
+    @* Checks a condition so the view can show the right content for this state. *@
+    @if (!string.IsNullOrWhiteSpace(Model.SignedAgreementPath))
+    {
+        @* Displays content to the user in a readable format. *@
+        <p><a asp-action="DownloadAgreement" asp-route-id="@Model.Id">Download signed agreement</a></p>
+    }
+@* Creates a visual container to group related content. *@
+</div>

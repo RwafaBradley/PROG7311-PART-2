@@ -1,0 +1,110 @@
+@* Learning edition Razor view: comments explain how the page is assembled step by step. *@
+@* Declares the view model type that this page expects. *@
+@model ContractFilterViewModel
+@* Starts a Razor code block for page-level setup. *@
+@{
+    @* Sets the page title used by the browser and layout. *@
+    ViewData["Title"] = "Contracts";
+}
+@* Creates a visual container to group related content. *@
+<div class="page-head">
+    @* Displays content to the user in a readable format. *@
+    <h1>Contracts</h1>
+    @* Renders a link or button for navigation or an action. *@
+    <a class="btn" asp-action="Create">New contract</a>
+@* Creates a visual container to group related content. *@
+</div>
+
+@* Creates a visual container to group related content. *@
+<div class="card">
+    @* Begins a form that sends user input back to the controller. *@
+    <form method="get" asp-action="Index" class="filter-grid">
+        @* Creates a visual container to group related content. *@
+        <div>
+            @* Shows the label that explains what the input is for. *@
+            <label>Search</label>
+            @* Renders an input control so the user can enter or choose data. *@
+            <input asp-for="Search" />
+        @* Creates a visual container to group related content. *@
+        </div>
+        @* Creates a visual container to group related content. *@
+        <div>
+            @* Shows the label that explains what the input is for. *@
+            <label>Status</label>
+            @* Renders an input control so the user can enter or choose data. *@
+            <select asp-for="Status" asp-items="Model.StatusOptions">
+                <option value="">All</option>
+            </select>
+        @* Creates a visual container to group related content. *@
+        </div>
+        @* Creates a visual container to group related content. *@
+        <div>
+            @* Shows the label that explains what the input is for. *@
+            <label>Start date</label>
+            @* Renders an input control so the user can enter or choose data. *@
+            <input asp-for="StartDate" type="date" />
+        @* Creates a visual container to group related content. *@
+        </div>
+        @* Creates a visual container to group related content. *@
+        <div>
+            @* Shows the label that explains what the input is for. *@
+            <label>End date</label>
+            @* Renders an input control so the user can enter or choose data. *@
+            <input asp-for="EndDate" type="date" />
+        @* Creates a visual container to group related content. *@
+        </div>
+        @* Creates a visual container to group related content. *@
+        <div class="filter-actions">
+            <button type="submit" class="btn">Filter</button>
+            @* Renders a link or button for navigation or an action. *@
+            <a class="btn secondary" asp-action="Index">Reset</a>
+        @* Creates a visual container to group related content. *@
+        </div>
+    </form>
+@* Creates a visual container to group related content. *@
+</div>
+
+@* Creates a visual container to group related content. *@
+<div class="card">
+    @* Starts a table used to present rows of business data. *@
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Client</th>
+                <th>Dates</th>
+                <th>Status</th>
+                <th>Service Level</th>
+                <th>Agreement</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Loops through the list so every item is rendered as a row or list entry. *@
+            @foreach (var contract in Model.Results)
+            {
+                <tr>
+                    <td>@contract.ContractNumber</td>
+                    <td>@contract.Client?.Name</td>
+                    <td>@contract.StartDate.ToString("yyyy-MM-dd") to @contract.EndDate.ToString("yyyy-MM-dd")</td>
+                    <td>@contract.Status</td>
+                    <td>@contract.ServiceLevel</td>
+                    <td>
+                        @* Checks a condition so the view can show the right content for this state. *@
+                        @if (!string.IsNullOrWhiteSpace(contract.SignedAgreementPath))
+                        {
+                            @* Renders a link or button for navigation or an action. *@
+                            <a asp-action="DownloadAgreement" asp-route-id="@contract.Id">Download PDF</a>
+                        }
+                        else
+                        {
+                            <span class="muted">None</span>
+                        }
+                    </td>
+                    <td><a asp-action="Details" asp-route-id="@contract.Id">Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+@* Creates a visual container to group related content. *@
+</div>
